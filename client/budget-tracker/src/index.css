@@ -1,0 +1,45 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --font-display: 'Fira Sans', sans-serif;
+    --breakpoint-3xl: 1920px;
+    --color-primary: #059669;
+}
+
+@layer base {
+    html {
+        font-family: var(--font-display);
+    }
+
+    body {
+        background-color: #fafcfa;
+        overflow-x: hidden;
+    }
+}
+
+@layer components {
+    .input-box {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 0.875rem;
+        background-color: #fdfefd;
+        border-radius: 0.5rem;
+        padding: 0.875rem 1rem;
+        border: 1px solid #d1d5db;
+        outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    
+    .input-box:focus-within {
+        border-color: #059669;
+        box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+    }
+    
+    .input-box:hover {
+        border-color: #9ca3af;
+    }
+}
