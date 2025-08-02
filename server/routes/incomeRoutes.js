@@ -6,12 +6,18 @@ import {
     downloadIncome,
 } from "../controllers/incomeController.js";
 import { protect } from "../middleware/authMiddleware.js";
+import { testBypass } from "../middleware/testBypass.js";
 
 const router = express.Router();
 
-router.post("/add", protect, addIncome);
-router.get("/", protect, getIncome);
-router.get('/download', protect, downloadIncome);
-router.delete("/:id", protect, deleteIncome);
+// 🚨 DEVELOPMENT ONLY - Switch between protect and testBypass
+// Use testBypass for testing without JWT tokens
+// Use protect for production
+const auth = testBypass; // Change to 'protect' when you want real auth
+
+router.post("/add", auth, addIncome);
+router.get("/", auth, getIncome);
+router.get('/download', auth, downloadIncome);
+router.delete("/:id", auth, deleteIncome);
 
 export default router;
