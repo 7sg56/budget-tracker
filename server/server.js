@@ -6,6 +6,7 @@ import connectDB from "./config/mongoDb.js";
 import authRoutes from "./routes/authRoutes.js";
 import incomeRoutes from "./routes/incomeRoutes.js";
 import expenseRoutes from "./routes/expenseRoutes.js";
+import homeRoutes from "./routes/homeRoutes.js";
 
 const app = express();
 
@@ -26,6 +27,7 @@ connectDB();
 app.use("/api/auth", authRoutes);
 app.use("/api/income", incomeRoutes);
 app.use("/api/expense", expenseRoutes);
+app.use("/api/home", homeRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

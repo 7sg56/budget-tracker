@@ -11,8 +11,7 @@ import { testBypass } from "../middleware/testBypass.js";
 const router = express.Router();
 
 // 🚨 DEVELOPMENT ONLY - Switch between protect and testBypass
-// Use testBypass for testing without JWT tokens
-// Use protect for production
+
 const auth = testBypass; // Change to 'protect' when you want real auth
 
 router.post("/add", auth, addIncome);
