@@ -12,7 +12,7 @@ const router = express.Router();
 
 // 🚨 DEVELOPMENT ONLY - Switch between protect and testBypass
 
-const auth = testBypass; // Change to 'protect' when you want real auth
+const auth = protect; // Change to 'protect' when you want real auth
 
 router.post("/add", auth, addIncome);
 router.get("/", auth, getIncome);
