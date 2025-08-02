@@ -7,8 +7,6 @@ import authRoutes from "./routes/authRoutes.js";
 import incomeRoutes from "./routes/incomeRoutes.js";
 import expenseRoutes from "./routes/expenseRoutes.js";
 
-
-
 const app = express();
 
 const PORT = process.env.PORT || 8000;

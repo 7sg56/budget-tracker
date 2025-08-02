@@ -8,17 +8,17 @@ export const addExpense = async (req, res) => {
     try {
         const { icon, category, amount, date } = req.body;
         
-        // Validation Checks
-        if (!category || !amount || !date) {
-            return res.status(400).json({ message: "All fields are required" });
+        // Validation Checks - date is optional since it has default value
+        if (!category || !amount) {
+            return res.status(400).json({ message: "Category and amount are required" });
         }
 
         const newExpense = new Expense({
             userId,
             category,
             amount,
-            icon, 
-            date: new Date(date) 
+            icon,
+            ...(date && { date: new Date(date) }) // Only include date if provided
         })
 
         await newExpense.save();

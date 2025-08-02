@@ -8,17 +8,16 @@ export const addIncome = async (req, res) => {
     try {
         const { icon, source, amount, date } = req.body;
         
-        // Validation Checks
-        if (!source || !amount || !date) {
-            return res.status(400).json({ message: "All fields are required" });
+        if (!source || !amount) {
+            return res.status(400).json({ message: "Source and amount are required" });
         }
 
         const newIncome = new Income({
             userId,
             source,
             amount,
-            icon, 
-            date: new Date(date) 
+            icon,
+            ...(date && { date: new Date(date) }) // Only include date if provided
         })
 
         await newIncome.save();
